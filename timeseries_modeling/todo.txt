@@ -1,0 +1,14 @@
+Create VRT code
+
+for 60mk tiles vrts will be spatial and per band
+
+
+
+NEXT
+Create VRTs for 2 month and 3 month composites
+
+Count total NA data entire time series?
+Plot  number of images per composite year
+
+count should sum
+composites should use max

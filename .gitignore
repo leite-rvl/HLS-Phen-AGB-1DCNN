@@ -1,0 +1,7 @@
+*.tif
+*.nc
+*.csv
+*.json
+*.log
+__pycache__/
+*.ipynb_checkpoints/

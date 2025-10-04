@@ -1,0 +1,77 @@
+######################################
+04 - Error 107 Transport endpoint is not connected.
+######################################
+ANSWER - AI GOOGLE
+The [Errno 107] Transport endpoint is not connected error, indicates a network or communication failure, often occurring during operations involving mounted drives (like in Google Colab) or other remote connections where the underlying communication channel has been disrupted. This can be caused by a drive unmounting unexpectedly, a lost network connection, or an issue with inter-process communication (IPC), and requires checking the drive's connection, network status, and potentially restarting services. 
+
+###############
+FIX
+###############
+# Adding this to the beggining of script moving cwd to a safe directory
+import os
+os.chdir("/tmp")
+
+/projects/my-private-bucket/code-git-shared/icesat2_boreal/lib/build_ms_composite_addEVI2.py:993: RasterioDeprecationWarning: Source dataset should be opened in read-only mode. Use of datasets opened in modes other than 'r' will be disallowed in a future version.
+  write_cog(stack,
+Reading input: <open WarpedVRT name='WarpedVRT(/vsimem/bef4bbae-c738-4ab4-a946-2193f38ca6cd/bef4bbae-c738-4ab4-a946-2193f38ca6cd.tif)' mode='r'>
+
+Adding overviews...
+Updating dataset tags...
+Writing output to: /projects/my-private-bucket/HLS-1DCNN-AGB/data/tif/HLS_composites/monthly/br_af_grid60km_prj_evi2_max/tile_176/2018/HLS_176_01-01_01-31_2018_2018_maxevi2.tif
+_tiffWriteProc: Software caused connection abort.
+_tiffWriteProc: Transport endpoint is not connected.
+_tiffWriteProc: Transport endpoint is not connected.
+_tiffSeekProc: Transport endpoint is not connected.
+_tiffSeekProc: Transport endpoint is not connected.
+_tiffSeekProc: Transport endpoint is not connected.
+_tiffSeekProc: Transport endpoint is not connected.
+_tiffSeekProc: Transport endpoint is not connected.
+_tiffSeekProc: Transport endpoint is not connected.
+_tiffSeekProc: Transport endpoint is not connected.
+_tiffSeekProc: Transport endpoint is not connected.
+_tiffSeekProc: Transport endpoint is not connected.
+_tiffSeekProc: Transport endpoint is not connected.
+_tiffSeekProc: Transport endpoint is not connected.
+_tiffSeekProc: Transport endpoint is not connected.
+_tiffSeekProc: Transport endpoint is not connected.
+_tiffSeekProc: Transport endpoint is not connected.
+_tiffSeekProc: Transport endpoint is not connected.
+_tiffSeekProc: Transport endpoint is not connected.
+_tiffSeekProc: Transport endpoint is not connected.
+_tiffSeekProc: Transport endpoint is not connected.
+
+
+
+
+
+######################################
+03 - Warning -
+######################################
+
+/projects/my-private-bucket/code-git-shared/icesat2_boreal/lib/build_ms_composite_addEVI2.py:993: RasterioDeprecationWarning: Source dataset should be opened in read-only mode. Use of datasets opened in modes other than 'r' will be disallowed in a future version.
+  write_cog(stack,
+Reading input: <open WarpedVRT name='WarpedVRT(/vsimem/fc2b21c5-e09c-4b36-b3a7-04e7a0c8a256/fc2b21c5-e09c-4b36-b3a7-04e7a0c8a256.tif)' mode='r'>
+
+Adding overviews...
+Updating dataset tags...
+Writing output to: /projects/my-private-bucket/HLS-1DCNN-AGB/data/tif/HLS_composites/monthly/br_af_grid60km_prj_evi2_max/tile_176/2019/HLS_176_12-01_12-31_2019_2019_maxevi2.tif
+
+######################################
+02
+######################################
+
+Running tile 212, year 2018, month 06
+Error processing tile 212, year 2018, month 06: [Errno 107] Transport endpoint is not connected: '/projects/my-private-bucket/HLS-1DCNN-AGB/data/tif/HLS_composites/monthly/br_af_grid60km_prj_evi2_max/tile_212/2018/HLS_212_06-01_06-30_2018_2018_maxevi2.tif'
+
+
+
+
+
+
+
+
+
+######################################
+01 - remove os.getcwd() from EVI2 script?
+######################################
+OSError: [Errno 107] Transport endpoint is not connected Output saved to: /projects/my-private-bucket/HLS-1DCNN-AGB/data/tif/HLS_composites/monthly/br_af_grid60km_prj_evi2_max/tile_176/2019/HLS_176_11-01_11-30_2019_2019_maxevi2.tif Running tile 176, year 2019, month 12 shell-init: error retrieving current directory: getcwd: cannot access parent directories: Transport endpoint is not connected Traceback (most recent call last): File "/projects/my-private-bucket/code-git-shared/icesat2_boreal/lib/build_ms_composite_addEVI2.py", line 18, in <module> from rio_tiler.io import COGReader File "/opt/conda/envs/pangeo/lib/python3.12/site-packages/rio_tiler/__init__.py", line 5, in <module> from . import ( # noqa File "/opt/conda/envs/pangeo/lib/python3.12/site-packages/rio_tiler/io/__init__.py", line 5, in <module> from .stac import STACReader # noqa ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ File "/opt/conda/envs/pangeo/lib/python3.12/site-packages/rio_tiler/io/stac.py", line 21, in <module> import httpx File "/opt/conda/envs/pangeo/lib/python3.12/site-packages/httpx/__init__.py", line 15, in <module> from ._main import main File "/opt/conda/envs/pangeo/lib/python3.12/site-packages/httpx/_main.py", line 12, in <module> import rich.console File "/opt/conda/envs/pangeo/lib/python3.12/site-packages/rich/__init__.py", line 17, in <module> _IMPORT_CWD = os.path.abspath(os.getcwd())
