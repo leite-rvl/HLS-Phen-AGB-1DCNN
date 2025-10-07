@@ -274,3 +274,12 @@ for i, img_path in enumerate(img_paths):
         break
 
 
+
+################
+# export output with outliers
+output_gpkg_zonalstats_withnan_fn = '/projects/my-private-bucket/HLS-1DCNN-AGB/data/shp/gedi/l4a_t90km_t89_veg2022_zonalnan_HLS.gpkg'
+gdf.to_file(output_gpkg_zonalstats_withnan_fn)
+
+################
+# Export gdf_stats
+gdf_stats_nona.to_file(output_gpkg_zonalstats_fn)
