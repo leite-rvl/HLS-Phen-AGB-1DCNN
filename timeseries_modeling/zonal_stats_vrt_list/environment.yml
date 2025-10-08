@@ -1,0 +1,15 @@
+name: maap-zs
+channels: [conda-forge]
+dependencies:
+  - python=3.11
+  - numpy
+  - pandas
+  - geopandas
+  - rioxarray
+  - rasterio
+  - pyproj
+  - xrspatial
+  - gdal
+  - pip
+  - pip:
+      - maap-py==0.9.16  # or latest tag per MAAP docs
