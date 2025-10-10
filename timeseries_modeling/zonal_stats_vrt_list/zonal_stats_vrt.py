@@ -38,6 +38,8 @@ def build_zones_xarr(gpkg_points_path, img_path, ZONE_ID_COL='zone', BUFFER_METE
     if BUFFER_METERS > 0:
         gdf["geometry"] = gdf.geometry.buffer(BUFFER_METERS)
 
+        
+     # (geom, value) pairs; ensure values are int32
     shapes = list(zip(gdf.geometry, gdf[ZONE_ID_COL].astype(np.int32)))
 
     zones_arr = features.rasterize(
@@ -66,12 +68,11 @@ def zonal_stats_raster(zones_xarr, img_path, band_name='b', ZONE_ID_COL='zone'):
         zones=zones_xarr,
         values=da,
         stats_funcs=['mean'],
-        nodata_values=nodata,
-        return_type='pandas.DataFrame'
+        nodata_values=nodata#,
+        # return_type='pandas.DataFrame'
     )
 
     zs_df = zs_df.rename(columns={'mean': f'{band_name}_mean'})
-    zs_df = zs_df.reset_index().rename(columns={'index': ZONE_ID_COL})
     return zs_df
 
 
@@ -91,12 +92,13 @@ def run_zonal_stats(gpkg_points_path, dir_img, output_path, ZONE_ID_COL='zone', 
         gdf[ZONE_ID_COL] = np.arange(1, len(gdf) + 1, dtype=np.int32)
 
     zones_xarr = build_zones_xarr(gpkg_points_path, img_paths[0], ZONE_ID_COL, BUFFER_METERS)
-
+    
     for i, img_path in enumerate(img_paths, 1):
         band_name = os.path.basename(img_path).replace('.vrt', '')
         print(f"[{i}/{len(img_paths)}] Processing {band_name}...")
         try:
             out = zonal_stats_raster(zones_xarr, img_path, band_name, ZONE_ID_COL)
+            # import pdb; pdb.set_trace();
             gdf = gdf.merge(out, on=ZONE_ID_COL, how='left')
         except Exception as e:
             print(f"❌ Error on {band_name}: {e}")
@@ -104,7 +106,6 @@ def run_zonal_stats(gpkg_points_path, dir_img, output_path, ZONE_ID_COL='zone', 
     gdf.to_file(output_path)
     print(f"✅ Saved: {output_path}")
     return gdf
-
 
 def main():
     parser = argparse.ArgumentParser(description="Compute zonal statistics for GEDI L4A points/polygons.")

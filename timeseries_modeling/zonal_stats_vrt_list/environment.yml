@@ -12,4 +12,4 @@ dependencies:
   - gdal
   - pip
   - pip:
-      - maap-py==0.9.16  # or latest tag per MAAP docs
+      - maap-py==0.9.16  
