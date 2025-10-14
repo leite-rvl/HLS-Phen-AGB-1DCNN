@@ -18,12 +18,12 @@ basedir=$(dirname "$(readlink -f "$0")")
 
 
 # TESTING
-# GPKG="/projects/my-private-bucket/HLS-1DCNN-AGB/data/shp/gedi/test/l4a_t90km_t89_veg2022_outrm.gpkg" 
-# DIR_IMG="/projects/my-private-bucket/HLS-1DCNN-AGB/data/tif/HLS_composites/monthly/br_af_grid60km_prj_evi2_max/vrt_test/" 
-# OUTPUT="/projects/my-private-bucket/HLS-1DCNN-AGB/data/shp/gedi/l4a_t90km_t89_veg2022_outrm_zonal_HLS.gpkg" 
-# ZONE_ID_COL="zone" 
-# BUFFER_M=0 
-# EXCLUDE_BANDS="ValidMask.vrt count.vrt yearDate.vrt JulianDate.vrt" 
+GPKG="/projects/my-private-bucket/HLS-1DCNN-AGB/data/shp/gedi/test/l4a_t90km_t89_veg2022_outrm.gpkg" 
+DIR_IMG="/projects/my-private-bucket/HLS-1DCNN-AGB/data/tif/HLS_composites/monthly/br_af_grid60km_prj_evi2_max/vrt_test/" 
+OUTPUT="/projects/my-private-bucket/HLS-1DCNN-AGB/data/shp/gedi/l4a_t90km_t89_veg2022_outrm_zonal_HLS.gpkg" 
+ZONE_ID_COL="zone" 
+BUFFER_M=0 
+EXCLUDE_BANDS="ValidMask.vrt count.vrt yearDate.vrt JulianDate.vrt" 
 
 
 
