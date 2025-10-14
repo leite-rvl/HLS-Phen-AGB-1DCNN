@@ -1,0 +1,37 @@
+algorithm_description: Calculate zonal stats using rio xarrays for a list of vrt files
+algorithm_name: zonal_stats_rxr_vrt_0.0.2
+algorithm_version: main
+build_command: timeseries_modeling/zonal_stats_vrt_list/build_env.sh
+disk_space: 10GB
+docker_container_url: mas.maap-project.org/root/maap-workspaces/custom_images/maap_base:v4.2.0
+inputs:
+  config: []
+  file:
+  - default: ''
+    description: ''
+    name: GPKG
+    required: true
+  - default: ''
+    description: ''
+    name: DIR_IMG
+    required: true
+  - default: ''
+    description: ''
+    name: OUTPUT
+    required: true
+  - default: '"zone"'
+    description: ''
+    name: ZONE_ID_COL
+    required: false
+  - default: '0'
+    description: ''
+    name: BUFFER_M
+    required: false
+  - default: '"ValidMask.vrt count.vrt yearDate.vrt JulianDate.vrt" '
+    description: ''
+    name: EXCLUDE_BANDS
+    required: false
+  positional: []
+queue: maap-dps-worker-16gb
+repository_url: https://github.com/leite-rvl/HLS-Phen-AGB-1DCNN.git
+run_command: timeseries_modeling/zonal_stats_vrt_list/zonal_stats_vrt.py
