@@ -2,11 +2,11 @@
 set -euo pipefail
 
 # Get current location of build script
-basedir=$(dirname "$(readlink -f "$0")")
+# basedir=$(dirname "$(readlink -f "$0")")
 
 # Make default dir the .sh command dir
-# SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-# cd "$SCRIPT_DIR"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$SCRIPT_DIR"
 
 # # Create env once per machine; safe to call repeatedly
 # ENV_PREFIX="/projects/env/maap-zs"
