@@ -1,7 +1,31 @@
+# Jupyter
+.ipynb_checkpoints/
+
+# Temporary and hidden files
+.fuse_hidden*
+.DS_Store
+
+# Data folders
+data/tif/
+data/raw/
+data/tmp/
+
+# Geospatial files
 *.tif
+*.tiff
+*.gpkg
+*.shp
+*.dbf
+*.shx
+*.prj
+*.cpg
+
+# Archives and large outputs
+*.zip
+*.tar
+*.tar.gz
+*.7z
+*.h5
 *.nc
-*.csv
-*.json
-*.log
-__pycache__/
-*.ipynb_checkpoints/
+
+
