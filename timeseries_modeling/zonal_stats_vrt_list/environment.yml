@@ -1,7 +1,9 @@
-name: maap-zs
-channels: [conda-forge]
+name: python
+channels:
+  - conda-forge
+  - defaults
 dependencies:
-  # - python=3.11
+  - gdal
   - numpy
   - pandas
   - geopandas
@@ -10,6 +12,20 @@ dependencies:
   - pyproj
   - xrspatial
   - gdal
-  # - pip
-  # - pip:
-  #     - maap-py==0.9.16  
+
+
+# name: maap-zs
+# channels: [conda-forge]
+# dependencies:
+#   # - python=3.11
+#   - numpy
+#   - pandas
+#   - geopandas
+#   - rioxarray
+#   - rasterio
+#   - pyproj
+#   - xrspatial
+#   - gdal
+#   # - pip
+#   # - pip:
+#   #     - maap-py==0.9.16  

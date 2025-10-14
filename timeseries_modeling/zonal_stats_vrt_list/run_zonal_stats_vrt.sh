@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-
+# Get current location of build script
+basedir=$(dirname "$(readlink -f "$0")")
 
 # Make default dir the .sh command dir
 # SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
