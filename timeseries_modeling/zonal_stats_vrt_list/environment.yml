@@ -1,7 +1,7 @@
 name: python
 channels: [conda-forge]
 dependencies:
-  - python=3.11
+  # - python=3.11
   - numpy
   - pandas
   - geopandas
@@ -10,9 +10,9 @@ dependencies:
   - pyproj
   - xrspatial
   - gdal
-  - pip
-  - pip:
-      - maap-py==0.9.16  
+  # - pip
+  # - pip:
+  #     - maap-py==0.9.16  
 
 
 
