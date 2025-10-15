@@ -1,9 +1,7 @@
 name: python
-channels:
-  - conda-forge
-  - defaults
+channels: [conda-forge]
 dependencies:
-  - gdal
+  - python=3.11
   - numpy
   - pandas
   - geopandas
@@ -11,6 +9,26 @@ dependencies:
   - rasterio
   - pyproj
   - xrspatial
+  - gdal
+  - pip
+  - pip:
+      - maap-py==0.9.16  
+
+
+
+# name: python
+# channels:
+#   - conda-forge
+#   - defaults
+# dependencies:
+#   - gdal
+#   - numpy
+#   - pandas
+#   - geopandas
+#   - rioxarray
+#   - rasterio
+#   - pyproj
+#   - xrspatial
 
 
 # name: maap-zs
