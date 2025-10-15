@@ -16,7 +16,7 @@ dependencies:
   - rtree=1.3.0             # optional but useful for spatial indexing
   - libspatialindex         # rtree runtime dependency
   - pip
-  - dask
+  - dask #=2024.11.0
   - distributed    # optional but recommended
 # variables:
 #   TITILER_STAC_ENDPOINT: https://titiler-stac.maap-project.org/
@@ -24,6 +24,7 @@ dependencies:
 #   STAC_CATALOG_NAME: MAAP STAC
 #   STAC_CATALOG_URL: https://stac.maap-project.org/
 #   STAC_BROWSER_URL: https://stac-browser.maap-project.org/
+
 
 
 # name: python
