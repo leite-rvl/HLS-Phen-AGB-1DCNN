@@ -8,10 +8,9 @@ dependencies:
   - pandas
   - geopandas
   - rioxarray
-  - rasterio
-  - pyproj
-  - xrspatial
-  - gdal
+  # - rasterio
+  # - pyproj
+  # - xrspatial
 
 
 # name: maap-zs
