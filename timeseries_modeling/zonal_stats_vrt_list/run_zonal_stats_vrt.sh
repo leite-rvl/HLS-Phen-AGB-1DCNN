@@ -31,19 +31,19 @@ DIR_IMG=$2
 OUTPUT=$3
 
 
-# conda run --live-stream --name python python zonal_stats_vrt.py \
-#   --gpkg       "${GPKG}" \
-#   --dir-img    "${DIR_IMG}" \
-#   --output     "${OUTPUT}" \
-#   --zone-id-col "${ZONE_ID_COL:-zone}" \
-#   --buffer-m    "${BUFFER_M:-0}" \
-#   --exclude-bands ${EXCLUDE_BANDS:-ValidMask.vrt count.vrt}
-
-
-python zonal_stats_vrt.py \
+conda run --live-stream --name python python zonal_stats_vrt.py \
   --gpkg       "${GPKG}" \
   --dir-img    "${DIR_IMG}" \
   --output     "${OUTPUT}" \
   --zone-id-col "${ZONE_ID_COL:-zone}" \
   --buffer-m    "${BUFFER_M:-0}" \
   --exclude-bands ${EXCLUDE_BANDS:-ValidMask.vrt count.vrt}
+
+
+# python zonal_stats_vrt.py \
+#   --gpkg       "${GPKG}" \
+#   --dir-img    "${DIR_IMG}" \
+#   --output     "${OUTPUT}" \
+#   --zone-id-col "${ZONE_ID_COL:-zone}" \
+#   --buffer-m    "${BUFFER_M:-0}" \
+#   --exclude-bands ${EXCLUDE_BANDS:-ValidMask.vrt count.vrt}
