@@ -4,14 +4,14 @@ channels:
   - defaults
 dependencies:
   - gdal
-  # - numpy
-  # - pandas
-  # - geopandas
-  # - rioxarray
-  # - rasterio
-  # - pyproj
-  # - xrspatial
-  # - gdal
+  - numpy
+  - pandas
+  - geopandas
+  - rioxarray
+  - rasterio
+  - pyproj
+  - xrspatial
+  - gdal
 
 
 # name: maap-zs
