@@ -19,7 +19,12 @@ cd "$SCRIPT_DIR"
 
 # TESTING
 GPKG="https://maap-ops-workspace.s3.amazonaws.com/rodrigo.leite/HLS-1DCNN-AGB/data/shp/gedi/test/l4a_t90km_t89_veg2022_outrm.gpkg" 
-DIR_IMG="https://maap-ops-workspace.s3.amazonaws.com/rodrigo.leite/HLS-1DCNN-AGB/data/tif/HLS_composites/monthly/br_af_grid60km_prj_evi2_max/vrt_test/" 
+
+# Dir img
+# DIR_IMG="https://maap-ops-workspace.s3.amazonaws.com/rodrigo.leite/HLS-1DCNN-AGB/data/tif/HLS_composites/monthly/br_af_grid60km_prj_evi2_max/vrt_test/" \
+VRT_PATH="https://maap-ops-workspace.s3.amazonaws.com/rodrigo.leite/HLS-1DCNN-AGB/data/tif/HLS_composites/monthly/br_af_grid60km_prj_evi2_max/vrt_test/HLS.2018.01.maxevi2.Blue.vrt"
+DIR_IMG=$(dirname "$VRT_PATH")
+
 OUTPUT="/projects/my-private-bucket/HLS-1DCNN-AGB/data/shp/gedi/l4a_t90km_t89_veg2022_outrm_zonal_HLS.gpkg" 
 ZONE_ID_COL="zone" 
 BUFFER_M=0 
@@ -34,10 +39,10 @@ EXCLUDE_BANDS="ValidMask.vrt count.vrt yearDate.vrt JulianDate.vrt"
 conda run --live-stream --name python python zonal_stats_vrt.py \
   --gpkg       "${GPKG}" \
   --dir-img    "${DIR_IMG}" \
-  --output     "${OUTPUT}" \
-  --zone-id-col "${ZONE_ID_COL:-zone}" \
-  --buffer-m    "${BUFFER_M:-0}" \
-  --exclude-bands ${EXCLUDE_BANDS:-ValidMask.vrt count.vrt}
+  --output     "${OUTPUT}" #\
+  # --zone-id-col "${ZONE_ID_COL:-zone}" \
+  # --buffer-m    "${BUFFER_M:-0}" \
+  # --exclude-bands ${EXCLUDE_BANDS:-ValidMask.vrt count.vrt}
 
 
 # python zonal_stats_vrt.py \
