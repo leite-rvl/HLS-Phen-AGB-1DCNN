@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-source activate python
+# source activate python
 
 mkdir -p output
 
