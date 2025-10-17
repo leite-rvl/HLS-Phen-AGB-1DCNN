@@ -1,29 +1,34 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Get absolute path of the script directory
-BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
-# Define output directory relative to the script location
-OUTPUTDIR="${BASEDIR}/output"
-
-# Create the output directory if it doesn't exist
-mkdir -p "$OUTPUTDIR"
-
-# Define the text file path
-INFO_FILE="${OUTPUTDIR}/paths_info.txt"
-
-# Write paths to the text file
-{
-  echo "Base directory: $BASEDIR"
-  echo "Output directory: $OUTPUTDIR"
-} > "$INFO_FILE"
-
-# Print confirmation and path to file
-echo "Paths written to: $INFO_FILE"
+# --- USER CONFIG ---
+VRT_URL="https://maap-ops-workspace.s3.amazonaws.com/rodrigo.leite/HLS-1DCNN-AGB/data/tif/HLS_composites/monthly/br_af_grid60km_prj_evi2_max/vrt_test/HLS.2018.01.maxevi2.Blue.vrt"
 
 
+# --- DEFINE OUTPUT FILE ---
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+OUTPUT_FILE="${SCRIPT_DIR}/vrt_test_result.txt"
 
+# --- TEST GDAL VRT READ ---
+echo "🔍 Testing if GDAL can open the VRT file:" | tee "$OUTPUT_FILE"
+echo "   $VRT_URL" | tee -a "$OUTPUT_FILE"
+echo "-------------------------------------------" | tee -a "$OUTPUT_FILE"
+
+if gdalinfo "$VRT_URL" > "$OUTPUT_FILE.tmp" 2>&1; then
+    echo "✅ SUCCESS: GDAL successfully read the VRT." | tee -a "$OUTPUT_FILE"
+    echo "Output summary:" | tee -a "$OUTPUT_FILE"
+    grep -E "Size is|Driver:|Coordinate System" "$OUTPUT_FILE.tmp" | tee -a "$OUTPUT_FILE" || head -n 10 "$OUTPUT_FILE.tmp" | tee -a "$OUTPUT_FILE"
+else
+    echo "❌ ERROR: GDAL could not open the VRT." | tee -a "$OUTPUT_FILE"
+    echo "Detailed log:" | tee -a "$OUTPUT_FILE"
+    cat "$OUTPUT_FILE.tmp" | tee -a "$OUTPUT_FILE"
+fi
+
+# Cleanup temp file
+rm -f "$OUTPUT_FILE.tmp"
+
+echo
+echo "📄 Results saved to: $OUTPUT_FILE"
 
 
 # #!/usr/bin/env bash

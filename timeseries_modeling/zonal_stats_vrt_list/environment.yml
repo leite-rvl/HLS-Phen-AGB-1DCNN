@@ -4,6 +4,32 @@ channels:
 dependencies:
   - python=3.12.7
   - numpy=2.0.2
+  - gdal
+  # - pandas=2.2.3
+  # - xarray=2024.10.0
+  # - rioxarray=0.17.0
+  # - rasterio=1.4.2
+  # - geopandas=1.0.1
+  # - pyproj=3.7.0
+  # - shapely=2.0.6
+  # - pyogrio=0.10.0          # fast I/O backend for GeoPackage, used by geopandas.read_file
+  # - xarray-spatial=0.4.0    # provides `xrspatial.zonal_stats`
+  # - rtree=1.3.0             # optional but useful for spatial indexing
+  # - libspatialindex         # rtree runtime dependency
+  # - pip
+  # - dask #=2024.11.0
+  # - distributed    # optional but recommended
+
+
+
+
+
+name: python
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12.7
+  - numpy=2.0.2
   - pandas=2.2.3
   - xarray=2024.10.0
   - rioxarray=0.17.0
