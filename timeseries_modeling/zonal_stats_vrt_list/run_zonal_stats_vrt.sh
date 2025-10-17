@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # --- USER CONFIG ---
-VRT_URL="https://maap-ops-workspace.s3.amazonaws.com/rodrigo.leite/HLS-1DCNN-AGB/data/tif/HLS_composites/monthly/br_af_grid60km_prj_evi2_max/vrt_test/HLS.2018.01.maxevi2.Blue.vrt"
+VRT_URL="https://maap-ops-workspace.s3.amazonaws.com/rodrigo.leite/HLS-Phen-AGB-1DCNN/data/tif/HLS_composites/monthly/br_af_grid60km_prj_evi2_max/vrt_test/HLS.2018.01.maxevi2.Blue.vrt"
 
 
 # --- DEFINE OUTPUT FILE ---
@@ -24,8 +24,8 @@ else
     cat "$OUTPUT_FILE.tmp" | tee -a "$OUTPUT_FILE"
 fi
 
-# Cleanup temp file
-rm -f "$OUTPUT_FILE.tmp"
+# # Cleanup temp file
+# rm -f "$OUTPUT_FILE.tmp"
 
 echo
 echo "📄 Results saved to: $OUTPUT_FILE"
