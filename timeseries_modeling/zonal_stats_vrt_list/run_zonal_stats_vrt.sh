@@ -1,27 +1,18 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# source activate python
+# Optional: activate your conda environment
+# conda activate myenv
 
-mkdir -p output
-
-# Get the directory of this script
 basedir=$(dirname "$(readlink -f "$0")")
-
-if [ "$#" -lt 1 ]; then
-  echo "Usage: $0 <path_to_gpkg>"
-  exit 1
-fi
-
-GPKG_PATH='https://maap-ops-workspace.s3.amazonaws.com/rodrigo.leite/HLS-1DCNN-AGB/data/shp/atlantic_forest/tiles/br_af_grid90km_prj.gpkg'
 OUTPUT_DIR="${basedir}/output"
 
-echo "🌀 Reading ${GPKG_PATH} and saving to ${OUTPUT_DIR}"
+mkdir -p "${OUTPUT_DIR}"
 
-python ${basedir}/zonal_stats_vrt.py ${GPKG_PATH} ${OUTPUT_DIR}
+echo "🌀 Running zonal statistics with hardcoded path in Python..."
+python "${basedir}/zonal_stats_vrt.py" "${OUTPUT_DIR}"
 
-echo "✅ Done!"
-
+echo "✅ Done! Results saved in ${OUTPUT_DIR}"
 
 
 

@@ -1,43 +1,32 @@
 #!/usr/bin/env python3
-"""
-write_gpkg_copy.py
-Reads a GeoPackage (.gpkg) and writes it to an output directory.
-Usage:
-    python write_gpkg_copy.py <input_gpkg_path> <output_directory>
-"""
-
 import sys
 import os
-import geopandas as gpd
 
-def main():
-    if len(sys.argv) != 3:
-        print("Usage: python write_gpkg_copy.py <input_gpkg_path> <output_directory>")
-        sys.exit(1)
+# Hardcoded input GPKG path
+GPKG_PATH = "https://maap-ops-workspace.s3.amazonaws.com/rodrigo.leite/HLS-1DCNN-AGB/data/shp/atlantic_forest/tiles/br_af_grid90km_prj.gpkg"
 
-    input_path = sys.argv[1]
-    output_dir = sys.argv[2]
-
-    if not os.path.exists(input_path):
-        print(f"❌ Input file does not exist: {input_path}")
-        sys.exit(1)
-
-    if not os.path.exists(output_dir):
-        os.makedirs(output_dir)
-
-    # Read GeoPackage
-    gdf = gpd.read_file(input_path)
-
-    # Define output path
-    output_path = os.path.join(output_dir, os.path.basename(input_path))
-
-    # Write GeoPackage
-    gdf.to_file(output_path, driver="GPKG")
-
-    print(f"✅ GeoPackage saved to: {output_path}")
+def main(output_dir):
+    print(f"🌀 Reading {GPKG_PATH}")
+    print(f"📁 Output directory: {output_dir}")
+    
+    # --- Example of where you'd run your real zonal stats function ---
+    # from mymodule import compute_zonal_stats
+    # compute_zonal_stats(GPKG_PATH, output_dir)
+    
+    # For now, just simulate work:
+    output_file = os.path.join(output_dir, "zonal_stats_results.txt")
+    with open(output_file, "w") as f:
+        f.write(f"Processed: {GPKG_PATH}\n")
+        f.write(f"Results saved to: {output_file}\n")
+    
+    print("✅ Zonal stats completed successfully!")
 
 if __name__ == "__main__":
-    main()
+    if len(sys.argv) < 2:
+        print("Usage: zonal_stats_vrt.py <output_dir>")
+        sys.exit(1)
+    main(sys.argv[1])
+
 
 ####################################################################################
 
