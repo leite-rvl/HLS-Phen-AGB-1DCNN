@@ -5,11 +5,11 @@ dependencies:
   - python=3.12.7
   - numpy=2.0.2
   - gdal
-  # - pandas=2.2.3
+  - pandas=2.2.3
   # - xarray=2024.10.0
   # - rioxarray=0.17.0
   # - rasterio=1.4.2
-  # - geopandas=1.0.1
+  - geopandas=1.0.1
   # - pyproj=3.7.0
   # - shapely=2.0.6
   # - pyogrio=0.10.0          # fast I/O backend for GeoPackage, used by geopandas.read_file

@@ -1,27 +1,43 @@
 #!/usr/bin/env python3
+"""
+write_gpkg_copy.py
+Reads a GeoPackage (.gpkg) and writes it to an output directory.
+Usage:
+    python write_gpkg_copy.py <input_gpkg_path> <output_directory>
+"""
 
 import sys
 import os
+import geopandas as gpd
 
-if len(sys.argv) < 2:
-    print("Usage: python write_text.py 'your text here'")
-    sys.exit(1)
+def main():
+    if len(sys.argv) != 3:
+        print("Usage: python write_gpkg_copy.py <input_gpkg_path> <output_directory>")
+        sys.exit(1)
 
-text = sys.argv[1]
-output_file = "output.txt"
+    input_path = sys.argv[1]
+    output_dir = sys.argv[2]
 
-# Get absolute path where this script is located
-script_dir = os.path.dirname(os.path.abspath(__file__))
-output_path = os.path.join(script_dir, output_file)
+    if not os.path.exists(input_path):
+        print(f"❌ Input file does not exist: {input_path}")
+        sys.exit(1)
 
-# Write text
-with open(output_path, "w") as f:
-    f.write(text + "\n")
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
 
-print("✅ Text written to output.txt")
-print(f"📁 Saved in: {output_path}")
+    # Read GeoPackage
+    gdf = gpd.read_file(input_path)
 
+    # Define output path
+    output_path = os.path.join(output_dir, os.path.basename(input_path))
 
+    # Write GeoPackage
+    gdf.to_file(output_path, driver="GPKG")
+
+    print(f"✅ GeoPackage saved to: {output_path}")
+
+if __name__ == "__main__":
+    main()
 
 ####################################################################################
 

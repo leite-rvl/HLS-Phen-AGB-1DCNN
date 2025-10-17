@@ -1,19 +1,26 @@
-
 #!/usr/bin/env bash
 set -euo pipefail
 
+source activate python
+
+mkdir -p output
+
+# Get the directory of this script
 basedir=$(dirname "$(readlink -f "$0")")
 
-TEXT="Hello from Bash to Python!"
-echo "🌀 Running Python script with input: $TEXT"
+if [ "$#" -lt 1 ]; then
+  echo "Usage: $0 <path_to_gpkg>"
+  exit 1
+fi
 
-python ${basedir}/zonal_stats_vrt.py "$TEXT"
+GPKG_PATH="$1"
+OUTPUT_DIR="${basedir}/output"
 
-echo "✅ Done. Check output.txt"
+echo "🌀 Reading $GPKG_PATH and saving to $OUTPUT_DIR"
 
+python "${basedir}/zonal_stats_vrt.py" "$GPKG_PATH" "$OUTPUT_DIR"
 
-
-
+echo "✅ Done!"
 
 
 
