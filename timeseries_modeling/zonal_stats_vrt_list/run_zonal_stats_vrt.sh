@@ -13,12 +13,12 @@ if [ "$#" -lt 1 ]; then
   exit 1
 fi
 
-GPKG_PATH="$1"
+GPKG_PATH='https://maap-ops-workspace.s3.amazonaws.com/rodrigo.leite/HLS-1DCNN-AGB/data/shp/atlantic_forest/tiles/br_af_grid90km_prj.gpkg'
 OUTPUT_DIR="${basedir}/output"
 
-echo "🌀 Reading $GPKG_PATH and saving to $OUTPUT_DIR"
+echo "🌀 Reading ${GPKG_PATH} and saving to ${OUTPUT_DIR}"
 
-python "${basedir}/zonal_stats_vrt.py" "$GPKG_PATH" "$OUTPUT_DIR"
+python ${basedir}/zonal_stats_vrt.py ${GPKG_PATH} ${OUTPUT_DIR}
 
 echo "✅ Done!"
 
