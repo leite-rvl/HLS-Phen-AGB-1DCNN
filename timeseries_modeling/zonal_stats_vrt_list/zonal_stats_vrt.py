@@ -8,20 +8,24 @@ GPKG_PATH = "https://maap-ops-workspace.s3.amazonaws.com/rodrigo.leite/HLS-1DCNN
 def main(output_dir):
     print(f"🌀 Reading {GPKG_PATH}")
     print(f"📁 Output directory: {output_dir}")
-    
-    # --- Example of where you'd run your real zonal stats function ---
-    # from mymodule import compute_zonal_stats
-    # compute_zonal_stats(GPKG_PATH, output_dir)
-    
-    # For now, just simulate work:
-    output_file = os.path.join(output_dir, "zonal_stats_results.txt")
-    with open(output_file, "w") as f:
-        f.write(f"Processed: {GPKG_PATH}\n")
-        f.write(f"Results saved to: {output_file}\n")
-    
-    print("✅ Zonal stats completed successfully!")
+
+    # Read the GeoPackage
+    gdf = gpd.read_file(GPKG_PATH)
+
+    # Optionally, you can modify or filter here
+    # Example: keep only a subset of columns or rows
+    # gdf = gdf[['tile_id', 'geometry']]
+
+    # Define output file path
+    output_file = os.path.join(output_dir, "zonal_stats_results.gpkg")
+
+    # Write the GeoDataFrame back to disk
+    gdf.to_file(output_file, driver="GPKG")
+
+    print(f"✅ Wrote GeoDataFrame to {output_file}")
 
 if __name__ == "__main__":
+    import sys
     if len(sys.argv) < 2:
         print("Usage: zonal_stats_vrt.py <output_dir>")
         sys.exit(1)
