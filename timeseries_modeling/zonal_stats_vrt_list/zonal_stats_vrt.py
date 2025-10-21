@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import sys
 import os
-
+import geopandas as gpd
 # Hardcoded input GPKG path
 GPKG_PATH = "https://maap-ops-workspace.s3.amazonaws.com/rodrigo.leite/HLS-1DCNN-AGB/data/shp/atlantic_forest/tiles/br_af_grid90km_prj.gpkg"
 
